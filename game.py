@@ -237,7 +237,8 @@ Try to find torch in one of the 3 chests, Good luck """ + jmeno)
 
     #wheel spinning(room three)
     kolo_stesti = ["Nothing", "Game over", "Fight"]
-
+    pravdepodobnost = [0,8]
+    
     print("Room three")
     time.sleep(1.5)
 
