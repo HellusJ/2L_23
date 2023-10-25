@@ -237,12 +237,11 @@ Try to find torch in one of the 3 chests, Good luck """ + jmeno)
 
     #wheel spinning(room three)
     kolo_stesti = ["Nothing", "Game over", "Fight"]
-    pravdepodobnost = [0.8, 0.1, 0.8]
 
     print("Room three")
     time.sleep(1.5)
 
-    value = random.choices(kolo_stesti, pravdepodobnost)[0]
+    value = random.choices(kolo_stesti)
     print("Wheel spinning - one option is chosen at random (fight, Nothing or game over) Good luck " + jmeno)
     start = int(input("Type 1 to spin the wheel: "))
 
