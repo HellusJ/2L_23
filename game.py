@@ -206,7 +206,7 @@ def chodba_zelena():
                 
     #Room two   
     time.sleep(2.5) 
-    print("Room Two")
+    print("Room Two ")
     time.sleep(2)
     
     print("""Look like its highly feared kungfu master. His only weakness is light.
@@ -234,61 +234,98 @@ Try to find torch in one of the 3 chests, Good luck """ + jmeno)
 
         else:
             print("There it is, you can blind him to countinue")
-
-    #wheel spinning(room three)
-    kolo_stesti = ["Nothing", "Game over", "Fight"]
-    pravdepodobnost = [0,8]
-    
+    time.sleep(2)
     print("Room three")
-    time.sleep(1.5)
+    print(f"Wheel spinning - one option is chosen at random (1, 2, 3, 4 or 5) Good luck {jmeno}!")
+    #wheel spinning(room three)
+    while True:
+        
+        x = int(input("Type 1 to spin: "))
 
-    value = random.choices(kolo_stesti)
-    print("Wheel spinning - one option is chosen at random (fight, Nothing or game over) Good luck " + jmeno)
-    start = int(input("Type 1 to spin the wheel: "))
+        if x == 1:
+            pepa = random.randint(1,5)
+            print("*Wheel spinning*")
+            time.sleep(1.5)
+            print(pepa)
+            if pepa == 1:
+                print("1 - Nothing")
+                time.sleep(1)
+                print("You can continue without fighting or other dangerous things")
+                break
 
-    if start == 1:
-        print("*Wheel spinning*")
-        time.sleep(2)
-        print(value)
+            elif pepa == 2:
+                print("2 - fight")
+                time.sleep(1)
+                print(f"You have to fight, good luck!")
+                time.sleep(2)
 
-        if value == "Nothing":
-            print("You have luck... Nothing means you can continue without fighting")
+                cislo = random.randint(1,10)
+                guess = 0
 
-        elif value == "Game over":
-            print("Youve lost :(")
-            print("You are so unlucky, There was a low chance of loosing, but there is nothing we can do...")
-            exit()
+                print("""Oh no! there is a snake that want to kill you.If you want to beat him,
+you have to guess the right number from 1-10 (remember you have only 5 attempts)""")
+    
+                pocet_pokusu1 = 5
+                while guess != cislo:
+        
+                    if pocet_pokusu1 == 0:
+                        print("Game over :(")
+                        print("thats sad ngl")
+                        exit()
 
-        elif value == "Fight":
-            print("You have to fight, Good luck!")
+                    guess = int(input("guess the number: "))
 
-            cislo = random.randint(1,10)
-            guess = 0
-            
-            print("""Oh no! there is a snake that want to kill you.If you want to beat him,
-you have to guess the right number from 1-10 (remember you have only 5 attempts)""")   
-            pocet_pokusu1 = 5
+                    if guess > cislo:
+                        print("guess lower")
+                        pocet_pokusu1 = pocet_pokusu1 - 1
+                    elif guess < cislo:
+                        print("guess higher")
+                        pocet_pokusu1 -= 1
+                    else:
+                        print("That was close, but you survived")
+                        break
+            elif pepa == 3:
+                print("Game over")
+                time.sleep(1.2)
+                print("The chance of this is low but it is what it is")
+                exit()
+        
+            elif pepa == 4:
+                print("You are spinning again!")
 
-            while guess != cislo:
+            elif pepa == 5:
+                print("2 - fight")
+                time.sleep(1)
+                print(f"You have to fight, good luck!")
+                time.sleep(2)
 
-                if pocet_pokusu1 == 0:
-                    print("Game over :(")
-                    print("Dont be mad, just try ir again")
-                    exit()
-   
-                guess = int(input("guess the number: "))
+                cislo = random.randint(1,10)
+                guess = 0
 
-                if guess > cislo:
-                    print("guess lower")
-                    pocet_pokusu1 = pocet_pokusu1 - 1
+                print("""Oh no! there is a snake that want to kill you.If you want to beat him,
+you have to guess the right number from 1-10 (remember you have only 5 attempts)""")
+    
+                pocet_pokusu1 = 5
+                while guess != cislo:
+        
+                    if pocet_pokusu1 == 0:
+                        print("Game over :(")
+                        print("thats sad ngl")
+                        exit()
 
-                elif guess < cislo:
-                    print("guess higher")
-                    pocet_pokusu1 -= 1
+                    guess = int(input("guess the number: "))
 
-                else:
-                    print("That was close " + jmeno + ", but you survived")
-  
+                    if guess > cislo:
+                        print("guess lower")
+                        pocet_pokusu1 = pocet_pokusu1 - 1
+                    elif guess < cislo:
+                        print("guess higher")
+                        pocet_pokusu1 -= 1
+                    else:
+                        print("That was close, but you survived")
+                        break
+            break
+
 #levá chodba
 def chodba_zluta():
     
@@ -314,7 +351,7 @@ you have to guess the right number from 1-10 (remember you have only 5 attempts)
             print("guess lower")
             pocet_pokusu1 = pocet_pokusu1 - 1
         elif guess < cislo:
-            print("guess higher")
+            print("guess higher ")
             pocet_pokusu1 -= 1
         else:
             print("That was close " + jmeno + ", but you survived")
@@ -421,60 +458,94 @@ Good luck!""")
 
 #pravá chodba
 def chodba_oranzova():
-    kolo_stesti = ["Nothing", "Game over", "Fight"]
-    
-    value = random.choices(kolo_stesti)
-    print("*Wheel spinning*")
-    time.sleep(2)
-    print(value)
-
-    if value == "Nothing":
-        print("You have luck... Nothing means you can continue without fighting")
-
-    elif value == "Game over":
-        print("Youve lost :(")
-        exit()
-
-    elif value == "Fight":
-        print("You have to fight, Good luck!")
+    while True:
         
-        #kungfu fight
-        print("""Look like its highly feared kungfu master. His only weakness is light.
-Try to find torch in one of the 3 chests, Good luck """ + jmeno)
-        
-        cislo1 = random.randint(1,3)
-        guess1 = 0
-        pocet_pokus3 = 5
+        x = int(input("Type 1 to spin: "))
 
-        if pocet_pokus3 == 0:
-            print("Game over :(")
+        if x == 1:
+            pepa = random.randint(1,5)
+            print("*Wheel spinning*")
             time.sleep(1.5)
-            print("Unlucky bro, but i believe that you are strong, juts try again")
-            exit()
-
-        print("""Oh no! there is a snake that want to kill you. If you win you will get a sword that will be usefull later.
-If you want to beat him, you have to guess the right number from 1-10 (remember you have only 5 attempts)""")
-    
-        while guess1 != cislo1:
-
-            if pocet_pokus3 == 0:
-                print("Game over :(")
-                print("thats sad ngl")
-                exit()
-
-            guess1 = int(input("guess the number: "))
-
-            if guess1 > cislo1:
-                print("guess lower")
-                pocet_pokus3 = pocet_pokus3 - 1
-            elif guess1 < cislo1:
-                print("guess higher")
-                pocet_pokus3 -= 1
-            else:
-                print("That was close " + jmeno + ", but you survived")
+            print(pepa)
+            if pepa == 1:
+                print("1 - Nothing")
                 time.sleep(1)
+                print("You can continue without fighting or other dangerous things")
+                break
 
+            elif pepa == 2:
+                print("2 - fight")
+                time.sleep(1)
+                print(f"You have to fight, good luck!")
+                time.sleep(2)
+
+                cislo = random.randint(1,10)
+                guess = 0
+
+                print("""Oh no! there is a snake that want to kill you.If you want to beat him,
+you have to guess the right number from 1-10 (remember you have only 5 attempts)""")
     
+                pocet_pokusu1 = 5
+                while guess != cislo:
+        
+                    if pocet_pokusu1 == 0:
+                        print("Game over :(")
+                        print("thats sad ngl")
+                        exit()
+
+                    guess = int(input("guess the number: "))
+
+                    if guess > cislo:
+                        print("guess lower")
+                        pocet_pokusu1 = pocet_pokusu1 - 1
+                    elif guess < cislo:
+                        print("guess higher")
+                        pocet_pokusu1 -= 1
+                    else:
+                        print("That was close, but you survived")
+                        break
+            elif pepa == 3:
+                print("Game over")
+                time.sleep(1.2)
+                print("The chance of this is low but it is what it is")
+                exit()
+        
+            elif pepa == 4:
+                print("You are spinning again!")
+
+            elif pepa == 5:
+                print("2 - fight")
+                time.sleep(1)
+                print(f"You have to fight, good luck!")
+                time.sleep(2)
+
+                cislo = random.randint(1,10)
+                guess = 0
+
+                print("""Oh no! there is a snake that want to kill you.If you want to beat him,
+you have to guess the right number from 1-10 (remember you have only 5 attempts)""")
+    
+                pocet_pokusu1 = 5
+                while guess != cislo:
+        
+                    if pocet_pokusu1 == 0:
+                        print("Game over :(")
+                        print("thats sad ngl")
+                        exit()
+
+                    guess = int(input("guess the number: "))
+
+                    if guess > cislo:
+                        print("guess lower")
+                        pocet_pokusu1 = pocet_pokusu1 - 1
+                    elif guess < cislo:
+                        print("guess higher")
+                        pocet_pokusu1 -= 1
+                    else:
+                        print("That was close, but you survived")
+                        break
+            break
+    time.sleep(2)
     print("Room two")
     time.sleep(1.5)
 
@@ -536,8 +607,8 @@ Good luck!""")
     time.sleep(1.5)
 
     otazka = int(input("""There are three doors. Only one of them is going to the next room.
-    Choose carefully (Type 1 for first door, 2 for second door and 3 for last door): """))
-
+Choose carefully (Type 1 for first door, 2 for second door and 3 for last door): """))
+    print("")
     if otazka == 1:
         print("The first door is correct. You are such a lucky guy! Keep going")
 
@@ -608,7 +679,7 @@ elif direction1 == 4:
 elif direction1 == 6:
     print("Room one")
     time.sleep(1.5)
-    print(f"Wheel spinning -one option is chosen at random (fight, Nothing or game over) Good luck {jmeno}!")
+    print(f"Wheel spinning -one option is chosen at random (1, 2, 3, 4 or 5) Good luck {jmeno}!")
     time.sleep(3)
     chodba_oranzova()
     final_fight()
