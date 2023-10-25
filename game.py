@@ -422,9 +422,8 @@ Good luck!""")
 #pravá chodba
 def chodba_oranzova():
     kolo_stesti = ["Nothing", "Game over", "Fight"]
-    pravdepodobnost = [0.8, 0.1, 0.8]
-
-    value = random.choices(kolo_stesti, pravdepodobnost)[0]
+    
+    value = random.choices(kolo_stesti)
     print("*Wheel spinning*")
     time.sleep(2)
     print(value)
